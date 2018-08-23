@@ -7,7 +7,7 @@ node {
 	    build("maven 3.5.4", "package");
 	}
 	
-	stage('SonarQube analysis') {
+/*	stage('SonarQube analysis') {
 		checkCodeQuality("SonarQube");
     }
 
@@ -18,14 +18,14 @@ node {
     stage('Deploy to OpenShift') {
 		deployOpenShift('vilvamani007', "${env.JOB_NAME}", 'v1', "${env.BUILD_NUMBER}", "piab-demo");
     }
-}
+}*/
 
 def build(mvnVersion, task){
 	def mvnHome = tool name: "${mvnVersion}"
 	env.PATH = "${mvnHome}/bin:${env.PATH}"
     sh "mvn clean ${task}"
 }
-
+/*
 def checkCodeQuality(sonarVersion){
 	withSonarQubeEnv("${sonarVersion}") { // SonarQube taskId is automatically attached to the pipeline context
         sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar" 
@@ -66,3 +66,4 @@ def deployOpenShift(registryID, imageName, version, buildNo, namespace){
 		println output
 	}
 }
+*/
