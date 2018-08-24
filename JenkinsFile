@@ -1,6 +1,6 @@
 node{
 	stage('SourceCodeMgmt') {
-		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline'
+		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline.git'
 	}
 	
 	stage('Build and Package') {
