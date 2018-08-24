@@ -1,35 +1,4 @@
-pipeline {
-   agent{ label "master"
-   }
-    tools {
-        maven 'maven 3.5.4'
-      
-    }
-	
-    stages {
-        stage ('Initialize') {
-            steps {
-                bat '''
-                    echo "PATH = %PATH%"
-                    echo "M2_HOME = %M2_HOME%"
-                '''
-            }
-        }
-		stage('SourceCodeMgmt') {
-		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline.git'
-	}
-
-        stage ('Build') {
-            steps {
-                    bat 'mvn install'
-            }
-            
-                 }
- //   }           
-
-
-//node {
-
+node{
 	stage('SourceCodeMgmt') {
 		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline.git'
 	}
@@ -97,4 +66,6 @@ def deployOpenShift(registryID, imageName, version, buildNo, namespace){
 		println output
 	}
 }
+
+
 
