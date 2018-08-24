@@ -16,7 +16,7 @@ pipeline {
             }
         }
 		stage('SourceCodeMgmt') {
-		git changelog: false, poll: false, url: 'https://github.com/mattareddy357/springboot-pipeline.git'
+		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline.git'
 	}
 
         stage ('Build') {
@@ -25,12 +25,13 @@ pipeline {
             }
             
                  }
-    }           
+ //   }           
 
 
-/*node {
+//node {
+
 	stage('SourceCodeMgmt') {
-		git changelog: false, poll: false, url: 'https://github.com/mattareddy357/springboot-pipeline.git'
+		git changelog: false, poll: false, url: 'https://bitbucket.org/basivireddy/springboot-pipeline.git'
 	}
 	
 	stage('Build and Package') {
@@ -42,11 +43,11 @@ pipeline {
     }
 
 	stage('Docker Build and Publish') {
-		buildAndPush('vilvamani007', "${env.JOB_NAME}", 'v1');
+		buildAndPush('basivireddy', "${env.JOB_NAME}", 'v1');
     }
 	
     stage('Deploy to OpenShift') {
-		deployOpenShift('vilvamani007', "${env.JOB_NAME}", 'v1', "${env.BUILD_NUMBER}", "piab-demo");
+		deployOpenShift('basivireddy', "${env.JOB_NAME}", 'v1', "${env.BUILD_NUMBER}", "piab-demo");
     }
 }
 
@@ -96,4 +97,4 @@ def deployOpenShift(registryID, imageName, version, buildNo, namespace){
 		println output
 	}
 }
-*/
+
